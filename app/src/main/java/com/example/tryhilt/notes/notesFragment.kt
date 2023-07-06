@@ -7,16 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.Navigation
 import com.example.tryhilt.R
+import com.example.tryhilt.databinding.FragmentNotesBinding
 
 class notesFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = notesFragment()
-    }
-
     private lateinit var viewModel: NotesViewModel
-    private lateinit var binding: notesFragment
+    private lateinit var binding: FragmentNotesBinding
 
 
     override fun onCreateView(
@@ -26,12 +24,14 @@ class notesFragment : Fragment() {
         binding = FragmentNotesBinding.inflate(inflater, container, false)
         return binding.root
 
+        binding.fab.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.action_notesFragment_to_createNewNotesFragment)
+        }
 
-
+        binding.changeView.setOnClickListener {
+            //if button clicked change span count and wrap content
+        }
 
     }
-
-
-
 
 }

@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.tryhilt.R
+import com.example.tryhilt.databinding.FragmentCreateNewNotesBinding
+import com.example.tryhilt.databinding.FragmentDetailBinding
 
 class detailFragment : Fragment() {
 
@@ -15,18 +17,22 @@ class detailFragment : Fragment() {
     }
 
     private lateinit var viewModel: DetailViewModel
+    private lateinit var binding: FragmentDetailBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_detail, container, false)
+        binding=FragmentDetailBinding.inflate(inflater,container,false)
+        return binding.root
+
+        binding.editNotes.setOnClickListener {
+            //düzenleyecek
+        }
+
+
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
+
 
 }
