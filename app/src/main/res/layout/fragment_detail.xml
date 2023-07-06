@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".detail.detailFragment"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/teal_200"
+        >
+        <TextView
+            android:id="@+id/detail_title"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="Title"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="30dp"
+            ></TextView>
+        <TextView
+            android:id="@+id/detail_weather"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:text="weather"
+            android:textSize="30dp"
+            android:layout_weight="4"
+            android:layout_height="40dp"></TextView>
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/detail_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollHorizontally="true"
+        android:paddingStart="20dp"
+        android:paddingEnd="10dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:hint="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse laoreet nulla nec eleifend hendrerit. Aenean rutrum dolor id arcu viverra consectetur. Morbi eget magna feugiat, convallis sem ut, porta massa. Proin bibendum, ante sed laoreet tristique, elit arcu dapibus quam, eu viverra est nunc sit amet purus. Aliquam condimentum sapien vel tortor scelerisque molestie."
+
+        >
+    </TextView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:textSize="20dp"
+        android:text="00/00/0000"
+        android:gravity="center"
+        ></TextView>
+
+
+
+
+</LinearLayout>

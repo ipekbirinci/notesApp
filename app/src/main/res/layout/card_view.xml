@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="200dp"
+    android:layout_height="wrap_content"
+    android:id="@+id/card_cell">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/teal_200"
+        >
+        <TextView
+            android:id="@+id/note_title"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:textSize="20dp"
+            android:text="Title"
+            android:textStyle="bold"
+            android:gravity="center">
+
+        </TextView>
+        <TextView
+            android:id="@+id/note_context"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse laoreet nulla nec eleifend hendrerit. Aenean rutrum dolor id arcu viverra consectetur. Morbi eget magna feugiat, convallis sem ut, porta massa. Proin bibendum, ante sed laoreet tristique, elit arcu dapibus quam, eu viverra est nunc sit amet purus. Aliquam condimentum sapien vel tortor scelerisque molestie. Donec dignissim, felis quis mollis laoreet, ante sem ultrices arcu, id laoreet ligula arcu vehicula urna. Morbi auctor dui nec nibh gravida, porta ultrices risus aliquet. Mauris porttitor mi vel enim rutrum molestie. Etiam lorem orci, rhoncus id ligula quis, pulvinar pulvinar diam. Vivamus condimentum ipsum a libero sodales rutrum. Vestibulum non mauris et dui venenatis sagittis. Quisque finibus nisl ac est finibus suscipit. Ut eu molestie libero, eu placerat felis. Praesent quis dolor nec erat gravida maximus. Curabitur sagittis elit orci, ac condimentum tellus convallis ac.">
+
+        </TextView>
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>
