@@ -44,7 +44,8 @@
         android:layout_height="match_parent"
         android:layout_weight="5"
         android:scrollbars="vertical"
-        android:background="@color/white">
+        android:background="@drawable/edit_text_background"
+       >
 
     </EditText>
 

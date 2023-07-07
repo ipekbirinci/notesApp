@@ -23,11 +23,13 @@
                 android:layout_height="40dp"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
-                android:backgroundTint="@android:color/holo_purple"
+                android:backgroundTint="@color/teal_200"
                 android:layout_weight="4"
                 android:gravity="center"
+                android:background="@drawable/edit_text_background"
                 android:drawableRight="@drawable/search_icon"
                 android:hint="@string/edit_text_hint"
+
                 ></EditText>
 
             <ImageButton

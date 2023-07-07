@@ -51,6 +51,7 @@
             android:textSize="20dp"
             android:text="00/00/0000"
             android:gravity="center"
+            android:background="@drawable/edit_text_background"
             ></TextView>
         <ImageButton
             android:id="@+id/edit_notes"
