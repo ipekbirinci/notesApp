@@ -24,6 +24,8 @@ class notesFragment : Fragment() {
         binding = FragmentNotesBinding.inflate(inflater, container, false)
         return binding.root
 
+        viewModel.allNotes
+
         binding.fab.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_notesFragment_to_createNewNotesFragment)
         }
