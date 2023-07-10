@@ -7,16 +7,16 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "Note")
 data class Note(
     @ColumnInfo(name="title")
-    val title: String,
+    var title: String?,
     @ColumnInfo(name="context")
-    val context: String,
+    var context: String?,
     @ColumnInfo(name="date")
-    val date: Long,
+    var date: Long?,
     @ColumnInfo(name = "weather_location")
-    val weatherLocation: String
+    var weatherLocation: String?
 ){
     @PrimaryKey(autoGenerate = true)
-    val id: Int = 0
+    var id: Int = 0
 
 }
 

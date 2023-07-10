@@ -3,9 +3,12 @@ package com.example.tryhilt.data
 import androidx.lifecycle.LiveData
 import com.example.tryhilt.Dao.NoteDao
 
-class NoteRepository ( val notesDao: NoteDao){
+class NoteRepository ( private val notesDao: NoteDao){
 
-    val allNotes: LiveData<List<Note>> = notesDao.getAllNotes()
+    fun getAllNotes(): LiveData<List<Note>> {
+        return notesDao.getAllNotes()
+    }
+
 
     suspend fun insert(note:Note){
         notesDao.insert(note)

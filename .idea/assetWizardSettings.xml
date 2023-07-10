@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:$USER_HOME$/Library/Android/sdk/icons/material/materialicons/edit/baseline_edit_24.xml" />
+                                      <entry key="url" value="file:$USER_HOME$/Library/Android/sdk/icons/material/materialicons/add_to_photos/baseline_add_to_photos_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -29,7 +29,7 @@
                         <option name="values">
                           <map>
                             <entry key="color" value="8b6dc1" />
-                            <entry key="outputName" value="edit_icon" />
+                            <entry key="outputName" value="add_to_notes" />
                           </map>
                         </option>
                       </PersistentState>
