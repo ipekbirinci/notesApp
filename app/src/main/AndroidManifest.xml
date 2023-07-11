@@ -6,9 +6,9 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/card_view"
-        android:label="@string/BiNote"
-        android:roundIcon="@drawable/add_to_notes"
+        android:icon="@drawable/bee_notes"
+        android:label="@string/BeeNote"
+        android:roundIcon="@drawable/bee_notes"
         android:supportsRtl="true"
         android:theme="@style/Theme.TryHilt"
         tools:targetApi="31">

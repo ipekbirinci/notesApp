@@ -6,9 +6,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.AbstractListDetailFragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tryhilt.R
 import com.example.tryhilt.data.Note
+import com.example.tryhilt.detail.DetailViewModel
 
 
 class NoteAdapter(private val notes: List<Note>) : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
@@ -47,7 +49,11 @@ class NoteAdapter(private val notes: List<Note>) : RecyclerView.Adapter<NoteAdap
             val position = adapterPosition
             if (position != RecyclerView.NO_POSITION) {
                 val note = notes[position]
+                val action=
                 view.findNavController().navigate(R.id.action_notesFragment_to_detailFragment)
+
+
+
             }
 
 

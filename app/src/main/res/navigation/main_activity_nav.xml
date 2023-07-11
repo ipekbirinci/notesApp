@@ -20,6 +20,9 @@
             app:destination="@id/detailFragment"
             app:enterAnim="@android:anim/slide_in_left"
             app:exitAnim="@android:anim/slide_out_right" />
+        <argument
+            android:name="note_id"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/createNewNotesFragment"

@@ -6,18 +6,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.example.tryhilt.R
+import com.example.tryhilt.data.Note
 import com.example.tryhilt.databinding.FragmentCreateNewNotesBinding
 import com.example.tryhilt.databinding.FragmentDetailBinding
 
 class detailFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = detailFragment()
-    }
 
-    private lateinit var viewModel: DetailViewModel
+    private val viewModel by viewModels<DetailViewModel> ()
     private lateinit var binding: FragmentDetailBinding
+    
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,6 +31,10 @@ class detailFragment : Fragment() {
         binding.editNotes.setOnClickListener {
             //düzenleyecek
         }
+
+
+    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?){
 
 
     }
