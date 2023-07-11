@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/notesFragment"
-        android:name="com.example.tryhilt.notes.notesFragment"
+        android:name="com.example.tryhilt.notes.NotesFragment"
         android:label="fragment_notes"
         tools:layout="@layout/fragment_notes" >
         <action
@@ -25,7 +25,11 @@
         android:id="@+id/createNewNotesFragment"
         android:name="com.example.tryhilt.createNewNotes.createNewNotesFragment"
         android:label="fragment_create_new_notes"
-        tools:layout="@layout/fragment_create_new_notes" />
+        tools:layout="@layout/fragment_create_new_notes" >
+        <action
+            android:id="@+id/action_createNewNotesFragment_to_notesFragment"
+            app:destination="@id/notesFragment" />
+    </fragment>
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.example.tryhilt.detail.detailFragment"

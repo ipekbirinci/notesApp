@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/teal_200"
+    android:orientation="vertical"
     tools:context=".createNewNotes.createNewNotesFragment">
 
     <LinearLayout
@@ -25,7 +24,7 @@
             android:gravity="center"
             android:hint="@string/new_nates_title"
             android:paddingStart="15dp"
-            android:paddingEnd="15dp"></EditText>
+            android:paddingEnd="15dp"/>
 
         <TextView
             android:id="@+id/weather_degree"
@@ -33,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:hint="Weather"></TextView>
+            android:hint="Weather"/>
 
 
     </LinearLayout>
@@ -43,9 +42,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="5"
-        android:scrollbars="vertical"
         android:background="@drawable/edit_text_background"
-       >
+        android:scrollbars="vertical">
 
     </EditText>
 
@@ -53,11 +51,9 @@
         android:id="@+id/save"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="Save"
-        android:textStyle="bold"
         android:background="@color/black"
-        ></Button>
+        android:text="Save"
+        android:textStyle="bold"/>
 
 
 </LinearLayout>
-</layout>

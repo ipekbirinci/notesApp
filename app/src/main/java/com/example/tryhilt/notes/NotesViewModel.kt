@@ -1,29 +1,31 @@
 package com.example.tryhilt.notes
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.map
+import androidx.lifecycle.viewModelScope
 import com.example.tryhilt.Dao.NoteDao
 import com.example.tryhilt.data.Note
 import com.example.tryhilt.data.NoteDatabase
 import com.example.tryhilt.data.NoteRepository
+import kotlinx.coroutines.launch
 
-class NotesViewModel(application: Application) : AndroidViewModel(application) {
+class NotesViewModel(private val repository: NoteRepository) : ViewModel() {
 
-    private val repository: NoteRepository
+     fun getData() {
+        viewModelScope.launch {
+            repository.getAllNotes().map {
+                it.forEach { note->
 
-    init {
-        val dao = NoteDatabase.getDatabase(application).getNotesDao()
-        repository = NoteRepository(dao)
+
+                    Log.d("VERİVERİ",note.toString())
+                }
+            }
+        }
     }
-
-    // LiveData
-    fun getAllNotes(): LiveData<List<Note>> {
-        return repository.getAllNotes()
-    }
-
-    // Diğer işlevler...
 }
 

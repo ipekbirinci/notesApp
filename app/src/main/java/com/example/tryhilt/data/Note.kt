@@ -11,7 +11,7 @@ data class Note(
     @ColumnInfo(name="context")
     var context: String?,
     @ColumnInfo(name="date")
-    var date: Long?,
+    var date: String?,
     @ColumnInfo(name = "weather_location")
     var weatherLocation: String?
 ){

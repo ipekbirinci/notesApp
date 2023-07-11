@@ -2,4 +2,5 @@
     <string name="app_name">TryHilt</string>
     <string name="edit_text_hint">Search here!</string>
     <string name="new_nates_title">Write Title!</string>
+    <string name="BiNote">BiNote</string>
 </resources>
