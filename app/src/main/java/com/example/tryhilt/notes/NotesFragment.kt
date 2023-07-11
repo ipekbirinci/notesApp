@@ -36,29 +36,37 @@ class NotesFragment : Fragment() {
             Log.d("Clicked", "button")
             Navigation.findNavController(it).navigate(R.id.action_notesFragment_to_createNewNotesFragment)
         }
-          var isClicked=false
+        // Önce bir değişken oluşturun ve varsayılan olarak "card view" modunu ayarlayın
+        var isCardViewMode = true
 
         binding.changeView.setOnClickListener {
-
             Log.d("Clicked", "button")
-            var isClicked=true
-            if(isClicked){
-                viewModel.getAllNotes().observe(viewLifecycleOwner,{
-                        notesList->
 
-                    val layoutManager = GridLayoutManager(requireContext(), 1)
+            // Görünüm modunu değiştirin
+            isCardViewMode = !isCardViewMode
+
+            if (isCardViewMode) {
+                // Card View modunda ise
+                viewModel.getAllNotes().observe(viewLifecycleOwner) { notesList ->
+                    val layoutManager = GridLayoutManager(requireContext(),2)
                     binding.recyclerView.layoutManager = layoutManager
-                    binding.recyclerView.adapter = NoteListAdapter( notesList)
-                })
+                    binding.recyclerView.adapter = NoteAdapter(notesList)
+                }
+            } else {
+                // List View modunda ise
+                viewModel.getAllNotes().observe(viewLifecycleOwner) { notesList ->
+                    val layoutManager = LinearLayoutManager(requireContext())
+                    binding.recyclerView.layoutManager = layoutManager
+                    binding.recyclerView.adapter = NoteListAdapter(notesList)
+                }
             }
-
         }
-        viewModel.getAllNotes().observe(viewLifecycleOwner, { notesList ->
 
-            binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
-            binding.recyclerView.adapter = NoteAdapter( notesList)
-        })
-
+        viewModel.getAllNotes().observe(viewLifecycleOwner) { notesList ->
+            val layoutManager = GridLayoutManager(requireContext(),2)
+            binding.recyclerView.layoutManager = layoutManager
+            binding.recyclerView.adapter = NoteAdapter(notesList)
+        }
 
     }
 }
