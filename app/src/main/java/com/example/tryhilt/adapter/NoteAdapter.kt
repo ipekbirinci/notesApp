@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tryhilt.R
 import com.example.tryhilt.data.Note
 
+
 class NoteAdapter(private val notes: List<Note>) : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
@@ -43,6 +44,12 @@ class NoteAdapter(private val notes: List<Note>) : RecyclerView.Adapter<NoteAdap
             val note = notes[adapterPosition]
 
 
+        }
+    }
+
+    companion object {
+        fun create(notes: List<Note>): NoteAdapter {
+            return NoteAdapter(notes)
         }
     }
 }
