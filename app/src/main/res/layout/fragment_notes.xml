@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".notes.NotesFragment">
+    tools:context=".notes.NotesFragment"
+    android:padding="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
