@@ -12,6 +12,7 @@ android {
         exclude 'META-INF/atomicfu.kotlin_module'
     }
 
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
@@ -21,7 +22,7 @@ android {
         dataBinding true
     }
 
-    
+
     defaultConfig {
         applicationId "com.example.tryhilt"
         minSdk 21

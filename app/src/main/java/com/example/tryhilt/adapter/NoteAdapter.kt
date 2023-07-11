@@ -4,6 +4,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tryhilt.R
 import com.example.tryhilt.data.Note
@@ -41,7 +43,12 @@ class NoteAdapter(private val notes: List<Note>) : RecyclerView.Adapter<NoteAdap
         override fun onClick(view: View) {
             // CardView'a tıklandığında yapılacak işlemler
             //butona tıklanırsa silecek
-            val note = notes[adapterPosition]
+            //val note = notes[adapterPosition]
+            val position = adapterPosition
+            if (position != RecyclerView.NO_POSITION) {
+                val note = notes[position]
+                view.findNavController().navigate(R.id.action_notesFragment_to_detailFragment)
+            }
 
 
         }
