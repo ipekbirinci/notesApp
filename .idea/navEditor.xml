@@ -40,7 +40,7 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_detailFragment_to_createNewNotesFragment">
+                            <entry key="action_detailFragment_to_updateFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -67,6 +67,27 @@
                               </value>
                             </entry>
                             <entry key="action_notesFragment_to_detailFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="updateFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="678" />
+                            <option name="y" value="289" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_updateFragment_to_notesFragment">
                               <value>
                                 <LayoutPositions />
                               </value>

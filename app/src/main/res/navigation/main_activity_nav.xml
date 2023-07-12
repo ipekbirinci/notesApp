@@ -26,25 +26,38 @@
     </fragment>
     <fragment
         android:id="@+id/createNewNotesFragment"
-        android:name="com.example.tryhilt.createNewNotes.createNewNotesFragment"
+        android:name="com.example.tryhilt.create.createNewNotesFragment"
         android:label="fragment_create_new_notes"
         tools:layout="@layout/fragment_create_new_notes" >
         <action
             android:id="@+id/action_createNewNotesFragment_to_notesFragment"
             app:destination="@id/notesFragment" />
+        <argument
+            android:name="updateNote"
+            app:argType="com.example.tryhilt.data.Note"/>
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.example.tryhilt.detail.detailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail" >
-        <action
-            android:id="@+id/action_detailFragment_to_createNewNotesFragment"
-            app:destination="@id/createNewNotesFragment"
-            app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/slide_out_right" />
         <argument
             android:name="note"
             app:argType="com.example.tryhilt.data.Note" />
+        <action
+            android:id="@+id/action_detailFragment_to_updateFragment"
+            app:destination="@id/updateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateFragment"
+        android:name="com.example.tryhilt.update.UpdateFragment"
+        android:label="fragment_update"
+        tools:layout="@layout/fragment_update" >
+        <argument
+            android:name="updateNote"
+            app:argType="com.example.tryhilt.data.Note"/>
+        <action
+            android:id="@+id/action_updateFragment_to_notesFragment"
+            app:destination="@id/notesFragment" />
     </fragment>
 </navigation>

@@ -8,11 +8,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.example.tryhilt.R
 import com.example.tryhilt.data.Note
 import com.example.tryhilt.databinding.FragmentCreateNewNotesBinding
 import com.example.tryhilt.databinding.FragmentDetailBinding
+import com.example.tryhilt.notes.NotesFragmentDirections
 
 class detailFragment : Fragment() {
 
@@ -44,6 +46,10 @@ class detailFragment : Fragment() {
 
         binding.editNotes.setOnClickListener {
             //düzenleyecek
+            val action = detailFragmentDirections.actionDetailFragmentToUpdateFragment(noteId)
+            Log.d("deneme","${noteId}")
+            val navController = Navigation.findNavController(binding.root)
+            navController.navigate(action)
         }
     }
 

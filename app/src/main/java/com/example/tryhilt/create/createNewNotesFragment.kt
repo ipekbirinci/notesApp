@@ -1,7 +1,6 @@
-package com.example.tryhilt.createNewNotes
+package com.example.tryhilt.create
 
 import android.os.Bundle
-import android.provider.ContactsContract.CommonDataKinds.Note
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,13 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
 import androidx.navigation.Navigation
-import com.example.tryhilt.Dao.NoteDao
 import com.example.tryhilt.R
-import com.example.tryhilt.data.NoteRepository
 import com.example.tryhilt.databinding.FragmentCreateNewNotesBinding
-import com.example.tryhilt.databinding.FragmentNotesBinding
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale

@@ -19,7 +19,7 @@ class NotesViewModel(application: Application) : AndroidViewModel(Application())
 
     private val repository: NoteRepository
 
-    // ViewModel'in oluşturulması sırasında repository'yi başlatın
+
     init {
         val noteDao = NoteDatabase.getDatabase(application).getNotesDao()
         repository = NoteRepository(noteDao)

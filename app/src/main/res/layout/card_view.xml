@@ -20,7 +20,6 @@
                 android:id="@+id/note_title"
                 android:layout_width="100dp"
                 android:layout_height="40dp"
-                android:background="@drawable/edit_text_background"
                 android:gravity="center"
                 android:paddingTop="10dp"
                 android:text="Title"
