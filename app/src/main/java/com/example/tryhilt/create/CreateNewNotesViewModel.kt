@@ -16,12 +16,7 @@ class CreateNewNotesViewModel (application: Application): AndroidViewModel(appli
     init {
         val database = NoteDatabase.getDatabase(application)
         myDao = database.getNotesDao()
-
         allData = myDao.getAllNotes()
-    }
-
-    fun getAllData(): LiveData<List<Note>> {
-        return allData
     }
 
     fun insertData(data: Note) {

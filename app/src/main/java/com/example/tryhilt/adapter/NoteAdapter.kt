@@ -1,5 +1,6 @@
 package com.example.tryhilt.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -32,6 +33,7 @@ class NoteAdapter(
 
         holder.binding.deleteCard.setOnClickListener {
             clickListener.onRowDeleteClick(position, currentNote)
+            Log.d("asd","${currentNote.id}")
         }
         holder.binding.cardCell.setOnClickListener{
             clickListener.onRowClick(position, currentNote)

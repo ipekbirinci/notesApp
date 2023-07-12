@@ -1,18 +1,15 @@
 package com.example.tryhilt.update
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
 import androidx.navigation.Navigation
 import com.example.tryhilt.R
 import com.example.tryhilt.data.Note
 import com.example.tryhilt.databinding.FragmentUpdateBinding
-import com.example.tryhilt.detail.detailFragmentArgs
 
 class UpdateFragment : Fragment() {
 
@@ -25,19 +22,22 @@ class UpdateFragment : Fragment() {
     ): View? {
         binding=  FragmentUpdateBinding.inflate(inflater,container,false)
         val args = UpdateFragmentArgs.fromBundle(requireArguments())
-        val noteId: Note = args.updateNote
+        val note: Note = args.updateNote
+
+        //datadan veri güncelleme
+        binding.updateTitle.setText(note.title)
+        binding.updateContext.setText(note.context)
 
         binding.updateButton.setOnClickListener {
-            val title = binding.updateTitle.text.toString()
-            val content = binding.updateContext.text.toString()
-            viewModel.update(noteId.id.toString(), title, content)
+            note.title=binding.updateTitle.text.toString()
+            note.context = binding.updateContext.text.toString()
+            viewModel.update(note)
             Navigation.findNavController(it).navigate(R.id.action_updateFragment_to_notesFragment)
 
         }
 
         return binding.root
     }
-
 
 
 }
