@@ -43,5 +43,8 @@
             app:destination="@id/createNewNotesFragment"
             app:enterAnim="@android:anim/slide_in_left"
             app:exitAnim="@android:anim/slide_out_right" />
+        <argument
+            android:name="note"
+            app:argType="com.example.tryhilt.data.Note" />
     </fragment>
 </navigation>

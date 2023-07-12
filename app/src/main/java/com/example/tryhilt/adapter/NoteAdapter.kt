@@ -1,68 +1,44 @@
 package com.example.tryhilt.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.AbstractListDetailFragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tryhilt.R
 import com.example.tryhilt.data.Note
-import com.example.tryhilt.detail.DetailViewModel
+import com.example.tryhilt.databinding.CardViewBinding
+import com.example.tryhilt.rowclicklistener.RowClickListener
 
 
-class NoteAdapter(private val notes: List<Note>) : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
+class NoteAdapter(
+    private var noteList: List<Note>,
+    private var clickListener: RowClickListener<Note>
+) : RecyclerView.Adapter<NoteAdapter.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.card_view, parent, false)
-        return NoteViewHolder(view)
+    class ViewHolder(val binding: CardViewBinding) : RecyclerView.ViewHolder(binding.root)
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
+        val binding: CardViewBinding = DataBindingUtil.inflate(inflater, R.layout.card_view, parent, false)
+        return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
-        val note = notes[position]
-        holder.bind(note)
-    }
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val currentNote = noteList[position]
 
-    override fun getItemCount(): Int {
-        return notes.size
-    }
+        holder.binding.noteTitle.text = currentNote.title.toString()
+        holder.binding.noteContext.text = currentNote.context.toString()
 
-    inner class NoteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
-        private val titleTextView: TextView = itemView.findViewById(R.id.note_title)
-        private val noteContextTextView: TextView = itemView.findViewById(R.id.note_context)
-
-        init {
-            itemView.setOnClickListener(this)
+        holder.binding.deleteCard.setOnClickListener {
+            clickListener.onRowDeleteClick(position, currentNote)
         }
-
-        fun bind(note: Note) {
-            titleTextView.text = note.title
-            noteContextTextView.text = note.context
-        }
-
-        override fun onClick(view: View) {
-            // CardView'a tıklandığında yapılacak işlemler
-            //butona tıklanırsa silecek
-            //val note = notes[adapterPosition]
-            val position = adapterPosition
-            if (position != RecyclerView.NO_POSITION) {
-                val note = notes[position]
-                val action=
-                view.findNavController().navigate(R.id.action_notesFragment_to_detailFragment)
-
-
-
-            }
-
+        holder.binding.cardCell.setOnClickListener{
+            clickListener.onRowClick(position, currentNote)
 
         }
     }
 
-    companion object {
-        fun create(notes: List<Note>): NoteAdapter {
-            return NoteAdapter(notes)
-        }
-    }
+    override fun getItemCount(): Int = noteList.size
 }
+

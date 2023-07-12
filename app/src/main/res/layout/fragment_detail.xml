@@ -45,6 +45,7 @@
         android:scrollHorizontally="true" />
 
     <TextView
+        android:id="@+id/detail_date"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@drawable/edit_text_background"

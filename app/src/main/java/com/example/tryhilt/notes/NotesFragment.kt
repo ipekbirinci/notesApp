@@ -7,13 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tryhilt.R
 import com.example.tryhilt.adapter.NoteAdapter
-import com.example.tryhilt.adapter.NoteListAdapter
+import com.example.tryhilt.data.Note
 import com.example.tryhilt.databinding.FragmentNotesBinding
+import com.example.tryhilt.rowclicklistener.RowClickListener
+import kotlinx.coroutines.launch
 
 class NotesFragment : Fragment() {
 
@@ -25,48 +28,66 @@ class NotesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentNotesBinding.inflate(inflater, container, false)
+        observeViewModel()
+
         return binding.root
+    }
+
+    private fun observeViewModel() {
+
+        viewModel.getAllNotes().observe(viewLifecycleOwner) { listNote ->
+
+            val adapter = NoteAdapter(listNote, clickListener = object :
+                RowClickListener<Note> {
+                override fun onRowClick(pos: Int, item: Note) {
+                    Log.d("clicked", "card")
+                    //detayına gidicek
+
+                    val action = NotesFragmentDirections.actionNotesFragmentToDetailFragment(item)
+                    Log.d("Giden","${item.title}")
+                    val navController = Navigation.findNavController(binding.root)
+                    navController.navigate(action)
+
+
+                }
+
+                override fun onRowDeleteClick(pos: Int, item: Note) {
+                    Log.d("clicked", "delete")
+                    lifecycleScope.launch {
+                        viewModel.delete(item)
+                    }
+
+                }
+            }
+            )
+            binding.recyclerView.adapter = adapter
+            binding.recyclerView.layoutManager = GridLayoutManager(activity, 2)
+
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         binding.fab.setOnClickListener {
             Log.d("Clicked", "button")
-            Navigation.findNavController(it).navigate(R.id.action_notesFragment_to_createNewNotesFragment)
+            Navigation.findNavController(it)
+                .navigate(R.id.action_notesFragment_to_createNewNotesFragment)
         }
-        // Önce bir değişken oluşturun ve varsayılan olarak "card view" modunu ayarlayın
-        var isCardViewMode = true
+
+
 
         binding.changeView.setOnClickListener {
-            Log.d("Clicked", "button")
-
-            // Görünüm modunu değiştirin
-            isCardViewMode = !isCardViewMode
-
-            if (isCardViewMode) {
-                // Card View modunda ise
-                viewModel.getAllNotes().observe(viewLifecycleOwner) { notesList ->
-                    val layoutManager = GridLayoutManager(requireContext(),2)
-                    binding.recyclerView.layoutManager = layoutManager
-                    binding.recyclerView.adapter = NoteAdapter(notesList)
-                }
-            } else {
-                // List View modunda ise
-                viewModel.getAllNotes().observe(viewLifecycleOwner) { notesList ->
-                    val layoutManager = LinearLayoutManager(requireContext())
-                    binding.recyclerView.layoutManager = layoutManager
-                    binding.recyclerView.adapter = NoteListAdapter(notesList)
-                }
+            val layoutManager = binding.recyclerView.layoutManager as? GridLayoutManager
+            layoutManager?.let {
+                val currentSpanCount = it.spanCount
+                val newSpanCount = if (currentSpanCount == 1) 2 else 1
+                it.spanCount = newSpanCount
+                it.requestLayout()
             }
-        }
 
-        viewModel.getAllNotes().observe(viewLifecycleOwner) { notesList ->
-            val layoutManager = GridLayoutManager(requireContext(),2)
-            binding.recyclerView.layoutManager = layoutManager
-            binding.recyclerView.adapter = NoteAdapter(notesList)
         }
 
     }
+
 }

@@ -1,52 +1,56 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="160dp"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="20dp"
-    android:layout_margin="15dp"
-    android:id="@+id/card_cell">
-    <LinearLayout
+<layout>
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_cell"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:paddingTop="20dp"
-        android:background="@color/teal_200"
-        >
-        <TextView
-            android:id="@+id/note_title"
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:textSize="20dp"
-            android:text="Title"
-            android:paddingTop="10dp"
-            android:background="@drawable/edit_text_background"
-            android:textStyle="bold"
-            android:gravity="center">
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        app:cardCornerRadius="20dp">
 
-        </TextView>
-        <TextView
-            android:id="@+id/note_context"
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/teal_200"
             android:gravity="center"
-            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse laoreet nulla nec eleifend hendrerit. Aenean rutrum dolor id arcu viverra consectetur. Morbi eget magna feugiat, convallis sem ut, porta massa. Proin bibendum, ante sed laoreet tristique, elit arcu dapibus quam, eu viverra est nunc sit amet purus. Aliquam condimentum sapien vel tortor scelerisque molestie. Donec dignissim, felis quis mollis laoreet, ante sem ultrices arcu, id laoreet ligula arcu vehicula urna. Morbi auctor dui nec nibh gravida, porta ultrices risus aliquet. Mauris porttitor mi vel enim rutrum molestie. Etiam lorem orci, rhoncus id ligula quis, pulvinar pulvinar diam. Vivamus condimentum ipsum a libero sodales rutrum. Vestibulum non mauris et dui venenatis sagittis. Quisque finibus nisl ac est finibus suscipit. Ut eu molestie libero, eu placerat felis. Praesent quis dolor nec erat gravida maximus. Curabitur sagittis elit orci, ac condimentum tellus convallis ac.">
+            android:orientation="vertical"
+            android:paddingTop="20dp">
 
-        </TextView>
-        <ImageButton
-            android:id="@+id/delete"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@color/white"
+            <TextView
+                android:id="@+id/note_title"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:background="@drawable/edit_text_background"
+                android:gravity="center"
+                android:paddingTop="10dp"
+                android:text="Title"
+                android:textSize="20sp"
+                android:textStyle="bold">
 
-            android:src="@drawable/delete_icon">
+            </TextView>
 
-        </ImageButton>
+            <TextView
+                android:id="@+id/note_context"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse laoreet nulla nec eleifend hendrerit. Aenean rutrum dolor id arcu viverra consectetur. Morbi eget magna feugiat, convallis sem ut, porta massa. Proin bibendum, ante sed laoreet tristique, elit arcu dapibus quam, eu viverra est nunc sit amet purus. Aliquam condimentum sapien vel tortor scelerisque molestie. Donec dignissim, felis quis mollis laoreet, ante sem ultrices arcu, id laoreet ligula arcu vehicula urna. Morbi auctor dui nec nibh gravida, porta ultrices risus aliquet. Mauris porttitor mi vel enim rutrum molestie. Etiam lorem orci, rhoncus id ligula quis, pulvinar pulvinar diam. Vivamus condimentum ipsum a libero sodales rutrum. Vestibulum non mauris et dui venenatis sagittis. Quisque finibus nisl ac est finibus suscipit. Ut eu molestie libero, eu placerat felis. Praesent quis dolor nec erat gravida maximus. Curabitur sagittis elit orci, ac condimentum tellus convallis ac.">
 
-    </LinearLayout>
+            </TextView>
+
+            <ImageButton
+                android:id="@+id/delete_card"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@color/teal_200"
+                android:src="@drawable/delete_icon">
+
+            </ImageButton>
+
+        </LinearLayout>
 
 
-</androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
+</layout>
