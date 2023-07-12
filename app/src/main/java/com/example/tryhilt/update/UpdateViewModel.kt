@@ -1,6 +1,7 @@
 package com.example.tryhilt.update
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
@@ -19,10 +20,10 @@ class UpdateViewModel (application: Application) :AndroidViewModel(application) 
         repository = NoteRepository(noteDao)
     }
 
-    fun update(noteId: String, title: String, content: String) {
+    fun update(note:Note) {
         viewModelScope.launch {
-            val note = Note(noteId, title, content,null)
             repository.update(note)
+            Log.d("title","${note.title}")
         }
     }
 
