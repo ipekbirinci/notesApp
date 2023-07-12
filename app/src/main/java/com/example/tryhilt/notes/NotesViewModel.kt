@@ -19,7 +19,7 @@ class NotesViewModel(application: Application) : AndroidViewModel(Application())
 
     private val repository: NoteRepository
 
-    // ViewModel'in oluşturulması sırasında repository'yi başlatın
+
     init {
         val noteDao = NoteDatabase.getDatabase(application).getNotesDao()
         repository = NoteRepository(noteDao)
@@ -27,6 +27,9 @@ class NotesViewModel(application: Application) : AndroidViewModel(Application())
 
     fun getAllNotes(): LiveData<List<Note>> {
         return repository.getAllNotes()
+    }
+    suspend fun delete(note:Note){
+        return repository.delete(note)
     }
 }
 

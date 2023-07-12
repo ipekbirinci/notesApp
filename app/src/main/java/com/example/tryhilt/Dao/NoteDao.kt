@@ -5,7 +5,7 @@ import androidx.room.*
 import com.example.tryhilt.data.Note
 @Dao
 interface NoteDao {
-    @Query("SELECT * FROM Note order by id ASC")
+    @Query("SELECT * FROM Note order by id DESC")
     fun getAllNotes(): LiveData<List<Note>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)

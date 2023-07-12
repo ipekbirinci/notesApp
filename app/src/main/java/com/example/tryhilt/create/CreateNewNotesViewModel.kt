@@ -1,10 +1,8 @@
-package com.example.tryhilt.createNewNotes
+package com.example.tryhilt.create
 
 import android.app.Application
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.tryhilt.Dao.NoteDao
 import com.example.tryhilt.data.Note
@@ -31,4 +29,6 @@ class CreateNewNotesViewModel (application: Application): AndroidViewModel(appli
             myDao.insert(data)
         }
     }
+
+
 }
