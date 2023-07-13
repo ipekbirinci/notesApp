@@ -63,6 +63,7 @@ class NotesFragment : Fragment() {
             binding.recyclerView.adapter = adapter
             binding.recyclerView.layoutManager = GridLayoutManager(activity, 2)
 
+
         }
     }
 

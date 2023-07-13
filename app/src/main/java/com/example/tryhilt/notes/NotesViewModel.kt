@@ -31,5 +31,9 @@ class NotesViewModel(application: Application) : AndroidViewModel(Application())
     suspend fun delete(note:Note){
         return repository.delete(note)
     }
+
+    fun getWeather(){
+
+    }
 }
 
