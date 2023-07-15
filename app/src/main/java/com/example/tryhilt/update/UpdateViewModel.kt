@@ -9,16 +9,13 @@ import androidx.lifecycle.viewModelScope
 import com.example.tryhilt.data.Note
 import com.example.tryhilt.data.NoteDatabase
 import com.example.tryhilt.data.NoteRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class UpdateViewModel (application: Application) :AndroidViewModel(application) {
+@HiltViewModel
+class UpdateViewModel @Inject constructor(private val repository: NoteRepository) :ViewModel() {
 
-    private val repository: NoteRepository
-
-    init {
-        val noteDao = NoteDatabase.getDatabase(application).getNotesDao()
-        repository = NoteRepository(noteDao)
-    }
 
     fun update(note:Note) {
         viewModelScope.launch {

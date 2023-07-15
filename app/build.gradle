@@ -5,6 +5,7 @@ plugins {
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs.kotlin'
     id 'kotlin-parcelize'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -34,6 +35,9 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    kapt {
+        correctErrorTypes true
+    }
 
     buildTypes {
         release {
@@ -52,6 +56,9 @@ android {
 }
 
 dependencies {
+    implementation "com.google.dagger:hilt-android:2.44"
+    kapt "com.google.dagger:hilt-compiler:2.44"
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.8.20"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.20"
 

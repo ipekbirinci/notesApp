@@ -13,8 +13,12 @@ import com.example.tryhilt.adapter.NoteAdapter
 import com.example.tryhilt.data.Note
 import com.example.tryhilt.data.NoteDatabase
 import com.example.tryhilt.data.NoteRepository
-import kotlinx.coroutines.launch
 
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import javax.inject.Inject
+
+/*
 class NotesViewModel(application: Application) : AndroidViewModel(Application()) {
 
     private val repository: NoteRepository
@@ -35,5 +39,24 @@ class NotesViewModel(application: Application) : AndroidViewModel(Application())
     fun getWeather(){
 
     }
+}*/
+@HiltViewModel
+class NotesViewModel @Inject constructor(
+    private val repository: NoteRepository
+) : ViewModel() {
+
+    fun getAllNotes(): LiveData<List<Note>> {
+        return repository.getAllNotes()
+    }
+
+    suspend fun delete(note: Note) {
+        repository.delete(note)
+    }
+
+
+    fun getWeather() {
+
+    }
 }
+
 

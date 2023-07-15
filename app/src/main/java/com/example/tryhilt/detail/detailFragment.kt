@@ -15,7 +15,9 @@ import com.example.tryhilt.data.Note
 import com.example.tryhilt.databinding.FragmentCreateNewNotesBinding
 import com.example.tryhilt.databinding.FragmentDetailBinding
 import com.example.tryhilt.notes.NotesFragmentDirections
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class detailFragment : Fragment() {
 
 

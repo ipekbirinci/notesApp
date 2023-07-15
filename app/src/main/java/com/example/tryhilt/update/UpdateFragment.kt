@@ -10,7 +10,9 @@ import androidx.navigation.Navigation
 import com.example.tryhilt.R
 import com.example.tryhilt.data.Note
 import com.example.tryhilt.databinding.FragmentUpdateBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class UpdateFragment : Fragment() {
 
     private val  viewModel by viewModels<UpdateViewModel>()

@@ -14,12 +14,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tryhilt.R
 import com.example.tryhilt.adapter.NoteAdapter
 import com.example.tryhilt.data.Note
+import com.example.tryhilt.data.NoteRepository
 import com.example.tryhilt.databinding.FragmentNotesBinding
 import com.example.tryhilt.rowclicklistener.RowClickListener
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class NotesFragment : Fragment() {
 
+    @Inject
+    lateinit var noteRepository: NoteRepository
     private val viewModel by viewModels<NotesViewModel>()
     private lateinit var binding: FragmentNotesBinding
 
@@ -29,6 +35,8 @@ class NotesFragment : Fragment() {
     ): View? {
         binding = FragmentNotesBinding.inflate(inflater, container, false)
         observeViewModel()
+
+        val searcNotes= binding.search
 
         return binding.root
     }
