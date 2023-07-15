@@ -11,10 +11,11 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.tryhilt.R
 import com.example.tryhilt.databinding.FragmentCreateNewNotesBinding
+import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
-
+@AndroidEntryPoint
 class createNewNotesFragment : Fragment() {
 
     private val viewModel by viewModels<CreateNewNotesViewModel>()
