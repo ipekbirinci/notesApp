@@ -1,11 +1,8 @@
 package com.example.tryhilt
 
-import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.cardview.widget.CardView
+import androidx.appcompat.app.AppCompatActivity
 import dagger.hilt.android.AndroidEntryPoint
-import kotlin.random.Random
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {

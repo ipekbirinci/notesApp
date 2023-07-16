@@ -10,7 +10,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tryhilt.R
 import com.example.tryhilt.adapter.NoteAdapter
 import com.example.tryhilt.data.Note
@@ -73,6 +72,10 @@ class NotesFragment : Fragment() {
 
 
         }
+        viewModel.weatherData.observe(viewLifecycleOwner) { weatherResponse ->
+            val temperature = weatherResponse.temperature
+
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -82,6 +85,10 @@ class NotesFragment : Fragment() {
             Log.d("Clicked", "button")
             Navigation.findNavController(it)
                 .navigate(R.id.action_notesFragment_to_createNewNotesFragment)
+
+            lifecycleScope.launch {
+                viewModel.getWeather()
+            }
         }
 
 
@@ -96,6 +103,8 @@ class NotesFragment : Fragment() {
             }
 
         }
+
+
 
     }
 
