@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.tryhilt.data.Note
 import com.example.tryhilt.data.NoteRepository
+import com.example.tryhilt.di.NetworkModule
 import com.example.tryhilt.network.ApiRepository
 import com.example.tryhilt.responsedata.CurrentWeather
 import com.example.tryhilt.responsedata.WeatherResponse
@@ -33,7 +34,7 @@ class NotesViewModel @Inject constructor(
     }
 
 
-    suspend fun getWeather() {
+    suspend fun getWeather(latitude:Double,longitude:Double) {
         val latitude = 41.0
         val longitude = 29.0
 

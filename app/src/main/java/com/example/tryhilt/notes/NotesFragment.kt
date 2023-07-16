@@ -72,10 +72,7 @@ class NotesFragment : Fragment() {
 
 
         }
-        viewModel.weatherData.observe(viewLifecycleOwner) { weatherResponse ->
-            val temperature = weatherResponse.temperature
 
-        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -86,9 +83,6 @@ class NotesFragment : Fragment() {
             Navigation.findNavController(it)
                 .navigate(R.id.action_notesFragment_to_createNewNotesFragment)
 
-            lifecycleScope.launch {
-                viewModel.getWeather()
-            }
         }
 
 
@@ -101,6 +95,11 @@ class NotesFragment : Fragment() {
                 it.spanCount = newSpanCount
                 it.requestLayout()
             }
+
+        }
+        viewModel.weatherData.observe(viewLifecycleOwner) { weatherResponse ->
+            val temperature = weatherResponse.temperature
+            Log.d("OLMUŞ MU","${temperature}")
 
         }
 
