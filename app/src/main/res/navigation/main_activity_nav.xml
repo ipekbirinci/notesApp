@@ -34,7 +34,7 @@
             app:destination="@id/notesFragment" />
         <argument
             android:name="updateNote"
-            app:argType="com.example.tryhilt.data.Note"/>
+            app:argType="string"/>
     </fragment>
     <fragment
         android:id="@+id/detailFragment"

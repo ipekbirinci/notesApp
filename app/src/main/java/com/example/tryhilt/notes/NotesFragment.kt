@@ -1,16 +1,19 @@
 package com.example.tryhilt.notes
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.tryhilt.R
 import com.example.tryhilt.adapter.NoteAdapter
 import com.example.tryhilt.data.Note
 import com.example.tryhilt.data.NoteRepository
@@ -33,9 +36,27 @@ class NotesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentNotesBinding.inflate(inflater, container, false)
+
+        val searchText= binding.search.text
+
+        viewModel.viewModelScope.launch {
+            viewModel.getWeather()
+        }
+
         observeViewModel()
 
-        val searcNotes= binding.search
+        binding.changeView.setOnClickListener {
+            val layoutManager = binding.recyclerView.layoutManager as? GridLayoutManager
+            layoutManager?.let {
+                Log.d("denme","button")
+                val currentSpanCount = it.spanCount
+                val newSpanCount = if (currentSpanCount == 1) 2 else 1
+                it.spanCount = newSpanCount
+                it.requestLayout()
+            }
+
+        }
+
 
         return binding.root
     }
@@ -51,7 +72,7 @@ class NotesFragment : Fragment() {
                     //detayına gidicek
 
                     val action = NotesFragmentDirections.actionNotesFragmentToDetailFragment(item)
-                    Log.d("Giden","${item.title}")
+                    Log.d("Giden", "${item.title}")
                     val navController = Navigation.findNavController(binding.root)
                     navController.navigate(action)
 
@@ -72,40 +93,35 @@ class NotesFragment : Fragment() {
 
 
         }
-        viewModel.weatherData.observe(viewLifecycleOwner) { weatherResponse ->
-            val temperature = weatherResponse.temperature
+        viewModel.weatherData.observe(viewLifecycleOwner, Observer { currentWeather ->
+            Log.d("noteweather", "$currentWeather")
 
-        }
+        })
+
+
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.fab.setOnClickListener {
-            Log.d("Clicked", "button")
-            Navigation.findNavController(it)
-                .navigate(R.id.action_notesFragment_to_createNewNotesFragment)
 
-            lifecycleScope.launch {
+            viewModel.viewModelScope.launch {
                 viewModel.getWeather()
-            }
-        }
+                viewModel.weatherData.observe(viewLifecycleOwner, Observer { currentWeather ->
+                    Log.d("gidiyo", "$currentWeather")
+                    val action =
+                        NotesFragmentDirections.actionNotesFragmentToCreateNewNotesFragment(
+                            currentWeather.toString())
+                    Navigation.findNavController(it).navigate(action)
+                })
 
 
-
-        binding.changeView.setOnClickListener {
-            val layoutManager = binding.recyclerView.layoutManager as? GridLayoutManager
-            layoutManager?.let {
-                val currentSpanCount = it.spanCount
-                val newSpanCount = if (currentSpanCount == 1) 2 else 1
-                it.spanCount = newSpanCount
-                it.requestLayout()
             }
 
+
         }
-
-
 
     }
-
 }
