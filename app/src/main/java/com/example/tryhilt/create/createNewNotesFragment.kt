@@ -34,12 +34,17 @@ class createNewNotesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val args = createNewNotesFragmentArgs.fromBundle(requireArguments())
+        val weather: String = args.updateNote
+
+        Log.d("create","${weather}")
+        binding.weatherDegree.setText(weather)
 
         binding.save.setOnClickListener {
             val title = binding.titleofnote.text.toString()
             val noteContext = binding.newNote.text.toString()
             val currentDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
-            val note = com.example.tryhilt.data.Note(title,noteContext,currentDate,"weather")
+            val note = com.example.tryhilt.data.Note(title,noteContext,currentDate,weather)
             viewModel.insertData(note)
             Toast.makeText(requireContext(), "Notes Created Successful", Toast.LENGTH_SHORT).show()
             Log.d("title","${title}")

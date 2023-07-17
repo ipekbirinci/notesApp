@@ -1,11 +1,9 @@
 package com.example.tryhilt.responsedata
 
-import dagger.Module
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
-@Module
-@InstallIn(SingletonComponent::class)
+@Parcelize
 data class WeatherResponse(
     val latitude: Double,
     val longitude: Double,
@@ -15,10 +13,9 @@ data class WeatherResponse(
     val timezone_abbreviation: String,
     val elevation: Double,
     val current_weather: CurrentWeather
-)
+):Parcelable
 
-@Module
-@InstallIn(SingletonComponent::class)
+@Parcelize
 data class CurrentWeather(
     val temperature: Double,
     val windspeed: Double,
@@ -26,4 +23,4 @@ data class CurrentWeather(
     val weathercode: Int,
     val is_day: Int,
     val time: String
-)
+):Parcelable

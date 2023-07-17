@@ -40,6 +40,9 @@ class NoteAdapter(
         }
     }
 
+
+
+
     override fun getItemCount(): Int = noteList.size
 }
 
