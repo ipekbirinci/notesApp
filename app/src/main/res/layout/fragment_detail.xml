@@ -3,13 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/wall_paper"
     android:orientation="vertical"
     tools:context=".detail.detailFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:background="@color/teal_200"
+        android:background="@color/purpleforbackgroud"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -20,6 +21,7 @@
             android:layout_weight="4"
             android:gravity="center"
             android:text="Title"
+            android:textColor="@color/white"
             android:textSize="30dp" />
 
         <TextView
@@ -66,7 +68,7 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_gravity="center"
-        android:background="@color/white"
+        android:background="@color/backgrounf"
         android:src="@drawable/edit_icon">
 
     </ImageButton>

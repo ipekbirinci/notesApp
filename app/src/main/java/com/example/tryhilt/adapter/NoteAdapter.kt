@@ -39,7 +39,14 @@ class NoteAdapter(
 
         }
     }
+    private var nList = arrayListOf<Note>()
 
+    fun searchFiltering(filteredList: List<Note>) {
+
+        nList.clear()
+        nList.addAll(filteredList)
+        notifyItemRangeChanged(0, filteredList.size)
+    }
 
 
 

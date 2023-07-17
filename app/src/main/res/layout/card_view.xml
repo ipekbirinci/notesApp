@@ -11,7 +11,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/teal_200"
+            android:background="@color/backgrounf"
             android:gravity="center"
             android:orientation="vertical"
             android:paddingTop="20dp">
@@ -43,7 +43,7 @@
                 android:id="@+id/delete_card"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:background="@color/teal_200"
+                android:background="@color/backgrounf"
                 android:src="@drawable/delete_icon">
 
             </ImageButton>

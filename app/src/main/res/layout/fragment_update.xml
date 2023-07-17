@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".update.UpdateFragment"
     android:layout_gravity="center"
+    android:background="@drawable/wall_paper"
     android:orientation="vertical">
 
     <EditText
@@ -13,22 +14,28 @@
         android:layout_height="70dp"
         android:gravity="center"
         android:hint="Title Here"
+        android:height="0dp"
+        android:layout_weight="0"
         android:textColor="@color/white"
-        android:background="@color/teal_700">
+        android:background="@color/purpleforbackgroud">
 
     </EditText>
     <EditText
         android:id="@+id/update_context"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:background="@color/teal_200">
+        android:height="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        >
 
     </EditText>
     <Button
         android:id="@+id/update_button"
         android:layout_width="match_parent"
         android:layout_height="70dp"
+        android:height="0dp"
         android:text="Update"
+        android:layout_gravity="bottom"
         ></Button>
 
 </LinearLayout>

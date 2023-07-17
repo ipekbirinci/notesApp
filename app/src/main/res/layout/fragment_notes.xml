@@ -60,6 +60,7 @@
             android:layout_margin="48dp"
             app:layout_anchor="@id/recyclerView"
             app:layout_anchorGravity="center|end"
+            android:background="@color/purple_700"
             app:srcCompat="@drawable/add_to_notes" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

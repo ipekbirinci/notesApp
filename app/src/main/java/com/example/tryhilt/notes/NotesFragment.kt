@@ -39,6 +39,8 @@ class NotesFragment : Fragment() {
 
         val searchText= binding.search.text
 
+
+
         viewModel.viewModelScope.launch {
             viewModel.getWeather()
         }
