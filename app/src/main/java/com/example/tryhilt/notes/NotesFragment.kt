@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -28,6 +29,7 @@ class NotesFragment : Fragment() {
 
     @Inject
     lateinit var noteRepository: NoteRepository
+    private lateinit var adapter: NoteAdapter
     private val viewModel by viewModels<NotesViewModel>()
     private lateinit var binding: FragmentNotesBinding
 
@@ -37,21 +39,6 @@ class NotesFragment : Fragment() {
     ): View? {
         binding = FragmentNotesBinding.inflate(inflater, container, false)
 
-        binding.search.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-
-                val filterText = s.toString().trim()
-                filterList(filterText) // Güncellenmiş listeyi filtrelemek için
-            }
-        })
 
         viewModel.viewModelScope.launch {
             viewModel.getWeather()
@@ -87,50 +74,7 @@ class NotesFragment : Fragment() {
         return binding.root
     }
 
-    private fun filterList(filterText: String) {
-        val filteredList = mutableListOf<Note>()
 
-        for (note in listOf<Note>()) {
-
-            note.title.let {
-
-                it?.contains(filterText, ignoreCase = true)
-                filteredList.add(note)
-            }
-           /* if (note.title.contains(filterText, ignoreCase = true)) {
-                filteredList.add(note)
-            }*/
-        }
-
-        updateAdapter(filteredList)
-    }
-    private fun updateAdapter(filteredNotes: List<Note>) {
-        val adapter = NoteAdapter(filteredNotes, clickListener = object :
-            RowClickListener<Note> {
-            override fun onRowClick(pos: Int, item: Note) {
-                Log.d("clicked", "card")
-                //detayına gidicek
-
-                val action = NotesFragmentDirections.actionNotesFragmentToDetailFragment(item)
-                Log.d("Giden", "${item.title}")
-                val navController = Navigation.findNavController(binding.root)
-                navController.navigate(action)
-
-
-            }
-
-            override fun onRowDeleteClick(pos: Int, item: Note) {
-                Log.d("clicked", "delete")
-                lifecycleScope.launch {
-                    viewModel.delete(item)
-                }
-
-            }
-        }
-        )
-
-        binding.recyclerView.adapter = adapter
-    }
     private fun observeViewModel() {
 
         viewModel.getAllNotes().observe(viewLifecycleOwner) { listNote ->
@@ -174,6 +118,20 @@ class NotesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+
+                binding.search.clearFocus()
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapter.filter.filter(newText)
+                return true
+            }
+        })
+
+
 
         binding.fab.setOnClickListener {
 
