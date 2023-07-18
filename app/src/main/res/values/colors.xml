@@ -3,11 +3,12 @@
     <color name="purple_200">#112A46</color>
     <color name="purple_500">#ada3be</color>
     <color name="purple_700">#ada3be</color>
+    <color name="blue">#afbbd5</color>
 
     <color name="purpleforbackgroud">#ada3be</color>
     <color name="pink">#F5C3C5</color>
     <color name="yellow">#fad178</color>
-    <color name="backgrounf">#fef4f5</color>
+    <color name="background">#fef4f5</color>
     <color name="teal_200">#F2E5FA</color>
     <color name="teal_700">#C0ACE6</color>
     <color name="black">#C5ADE7</color>

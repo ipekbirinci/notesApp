@@ -3,12 +3,14 @@ package com.example.tryhilt.adapter
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Filter
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tryhilt.R
 import com.example.tryhilt.data.Note
 import com.example.tryhilt.databinding.CardViewBinding
 import com.example.tryhilt.rowclicklistener.RowClickListener
+import java.util.Locale
 
 
 class NoteAdapter(
@@ -39,17 +41,10 @@ class NoteAdapter(
 
         }
     }
-    private var nList = arrayListOf<Note>()
-
-    fun searchFiltering(filteredList: List<Note>) {
-
-        nList.clear()
-        nList.addAll(filteredList)
-        notifyItemRangeChanged(0, filteredList.size)
-    }
 
 
 
-    override fun getItemCount(): Int = noteList.size
+
+            override fun getItemCount(): Int = noteList.size
 }
 

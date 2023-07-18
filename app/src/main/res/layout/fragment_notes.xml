@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".notes.NotesFragment"
-    android:padding="5dp">
+    android:padding="24dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,11 +23,11 @@
             android:layout_height="40dp"
             android:layout_weight="4"
             android:background="@drawable/edit_text_background"
-            android:backgroundTint="@color/teal_200"
+            android:backgroundTint="@color/background"
             android:drawableRight="@drawable/search_icon"
             android:gravity="center"
             android:hint="@string/edit_text_hint"
-            android:paddingStart="15dp"
+            android:paddingStart="32dp"
             android:paddingEnd="15dp"/>
 
         <ImageButton
@@ -38,6 +38,14 @@
             android:clickable="true"
             android:background="@color/white"
             android:src="@drawable/card_view"/>
+        <ImageButton
+            android:id="@+id/turn_dark"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:background="@color/white"
+            android:src="@drawable/dark_mode"/>
 
     </LinearLayout>
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -48,7 +56,7 @@
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingStart="15dp"
+            android:paddingStart="11dp"
             android:paddingTop="10dp"
             android:paddingEnd="15dp"
             app:spanCount="2" />
@@ -57,10 +65,11 @@
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="48dp"
+            android:layout_margin="70dp"
+            android:clickable="true"
+            android:background="@color/blue"
             app:layout_anchor="@id/recyclerView"
             app:layout_anchorGravity="center|end"
-            android:background="@color/purple_700"
             app:srcCompat="@drawable/add_to_notes" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
