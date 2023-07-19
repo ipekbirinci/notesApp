@@ -70,7 +70,6 @@ class NotesFragment : Fragment() {
 
         }
 
-
         return binding.root
     }
 
@@ -79,7 +78,7 @@ class NotesFragment : Fragment() {
 
         viewModel.getAllNotes().observe(viewLifecycleOwner) { listNote ->
 
-            val adapter = NoteAdapter(listNote, clickListener = object :
+             adapter = NoteAdapter(listNote, clickListener = object :
                 RowClickListener<Note> {
                 override fun onRowClick(pos: Int, item: Note) {
                     Log.d("clicked", "card")
@@ -130,6 +129,7 @@ class NotesFragment : Fragment() {
                 return true
             }
         })
+
 
 
 

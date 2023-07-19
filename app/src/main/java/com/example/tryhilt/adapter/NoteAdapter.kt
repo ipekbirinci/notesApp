@@ -13,19 +13,14 @@ import com.example.tryhilt.R
 import com.example.tryhilt.data.Note
 import com.example.tryhilt.databinding.CardViewBinding
 import com.example.tryhilt.rowclicklistener.RowClickListener
+import java.lang.Character.toLowerCase
 import java.util.Locale
-
 class NoteAdapter(
     private val noteList: List<Note>,
     private val clickListener: RowClickListener<Note>
-) : RecyclerView.Adapter<NoteAdapter.ViewHolder>(), Filterable, SearchView.OnQueryTextListener {
+) : RecyclerView.Adapter<NoteAdapter.ViewHolder>(), Filterable {
 
-    private var noteFilterList = ArrayList<Note>()
-    private var currentFilterQuery: String = ""
-
-    init {
-        noteFilterList.addAll(noteList)
-    }
+    private var noteFilterList = noteList.toMutableList()
 
     class ViewHolder(val binding: CardViewBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -57,42 +52,33 @@ class NoteAdapter(
     override fun getFilter(): Filter {
         return object : Filter() {
             override fun performFiltering(constraint: CharSequence?): FilterResults {
-                val charSearch = constraint.toString().trim().toLowerCase(Locale.ROOT)
-                currentFilterQuery = charSearch
-                val resultList = if (charSearch.isEmpty()) {
-                    ArrayList(noteList)
+                //Aranan yazı
+                val charSearch = constraint.toString()
+                //Arama alanında bir yazı aranmadıysa tüm notları noteFilterList'e aktarıyoruz
+                if (charSearch.isEmpty()) {
+                    noteFilterList = noteList.toMutableList()
                 } else {
-                    val filteredList = ArrayList<Note>()
+                    val resultList = ArrayList<Note>()
                     for (row in noteList) {
                         row.title?.let {
-                            if (it.toLowerCase(Locale.ROOT).contains(charSearch)) {
-                                filteredList.add(row)
+                            if (it.toLowerCase(Locale.ROOT).contains(charSearch.toLowerCase(Locale.ROOT))) {
+                                resultList.add(row)
                             }
                         }
                     }
-                    filteredList
+                    noteFilterList = resultList
                 }
                 val filterResults = FilterResults()
-                filterResults.values = resultList
+                filterResults.values = noteFilterList
                 return filterResults
             }
 
-            @SuppressLint("NotifyDataSetChanged") @Suppress("UNCHECKED_CAST")
+            @Suppress("UNCHECKED_CAST")
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-                noteFilterList.clear()
-                noteFilterList.addAll(results?.values as ArrayList<Note>)
+                noteFilterList = results?.values as? MutableList<Note> ?: mutableListOf()
                 notifyDataSetChanged()
             }
         }
     }
 
-    override fun onQueryTextChange(newText: String?): Boolean {
-        filter.filter(newText)
-        return true
-    }
-
-    override fun onQueryTextSubmit(query: String?): Boolean {
-        filter.filter(query)
-        return true
-    }
 }
