@@ -11,7 +11,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Note(
     @ColumnInfo(name = "title")
-    var title: String?,
+    var title: String?=null,
     @ColumnInfo(name = "context")
     var context: String?,
     @ColumnInfo(name = "date")

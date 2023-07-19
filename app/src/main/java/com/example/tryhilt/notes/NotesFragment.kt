@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -28,6 +29,7 @@ class NotesFragment : Fragment() {
 
     @Inject
     lateinit var noteRepository: NoteRepository
+    private lateinit var adapter: NoteAdapter
     private val viewModel by viewModels<NotesViewModel>()
     private lateinit var binding: FragmentNotesBinding
 
@@ -37,7 +39,6 @@ class NotesFragment : Fragment() {
     ): View? {
         binding = FragmentNotesBinding.inflate(inflater, container, false)
 
-        val searchText= binding.search.text
 
         viewModel.viewModelScope.launch {
             viewModel.getWeather()
@@ -57,15 +58,27 @@ class NotesFragment : Fragment() {
 
         }
 
+        binding.turnDark.setOnClickListener {
+            val layoutManager = binding.recyclerView.layoutManager as? GridLayoutManager
+            layoutManager?.let {
+                Log.d("denme","button")
+                val currentSpanCount = it.spanCount
+                val newSpanCount = if (currentSpanCount == 1) 2 else 1
+                it.spanCount = newSpanCount
+                it.requestLayout()
+            }
+
+        }
 
         return binding.root
     }
+
 
     private fun observeViewModel() {
 
         viewModel.getAllNotes().observe(viewLifecycleOwner) { listNote ->
 
-            val adapter = NoteAdapter(listNote, clickListener = object :
+             adapter = NoteAdapter(listNote, clickListener = object :
                 RowClickListener<Note> {
                 override fun onRowClick(pos: Int, item: Note) {
                     Log.d("clicked", "card")
@@ -104,8 +117,25 @@ class NotesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+
+                binding.search.clearFocus()
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapter.filter.filter(newText)
+                return true
+            }
+        })
+
+
+
 
         binding.fab.setOnClickListener {
+
+            Log.d("bastııı", "dddd")
 
             viewModel.viewModelScope.launch {
                 viewModel.getWeather()
