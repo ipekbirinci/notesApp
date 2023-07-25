@@ -51,7 +51,7 @@ class LoginViewModel (
                 loginUiState.confirmpasswordSignUp.isNotBlank()
 
 
-    fun createUser(context:Context)=viewModelScope.launch {
+    fun createUser(context:android.content.Context)=viewModelScope.launch {
         try{
             if (!validateLoginForm()){
                 throw IllegalArgumentException("email and password can not be empty")
@@ -94,7 +94,7 @@ class LoginViewModel (
             loginUiState=loginUiState.copy(isLoading = false)
         }
     }
-    fun loginUser(context:Context)=viewModelScope.launch {
+    fun loginUser(context:android.content.Context)=viewModelScope.launch {
         try{
             if (!validateLoginForm()){
                 throw IllegalArgumentException("email and password can not be empty")
