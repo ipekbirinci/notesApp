@@ -76,6 +76,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="signInActivity">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-587" />
+                            <option name="y" value="42" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="updateFragment">
                     <value>
                       <LayoutPositions>

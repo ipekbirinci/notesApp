@@ -16,6 +16,23 @@ class AuthRepository {
 
     fun getUserId():String=Firebase.auth.currentUser?.uid.orEmpty()
 
+    suspend fun createUser(
+
+        email:String,
+        password:String,
+        onComplete:(Boolean)->Unit
+
+    )= withContext(Dispatchers.IO){
+        Firebase.auth
+            .signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener{
+                if(it.isSuccessful){
+                    onComplete.invoke(true)
+                }else{
+                    onComplete.invoke(false)
+                }
+            }.await()
+    }
     suspend fun login(
 
         email:String,
