@@ -14,6 +14,7 @@
         android:background="@color/purpleforbackgroud"
         android:gravity="center"
         android:orientation="horizontal"
+        style="@style/Head"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -25,6 +26,7 @@
             android:layout_weight="4"
             android:gravity="center"
             android:text="Title"
+            style="@style/Head"
             android:textColor="@color/white"
             android:textSize="30dp" />
 
@@ -54,6 +56,7 @@
         android:background="@color/background"
         android:hint="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse laoreet nulla nec eleifend hendrerit. Aenean rutrum dolor id arcu viverra consectetur. Morbi eget magna feugiat, convallis sem ut, porta massa. Proin bibendum, ante sed laoreet tristique, elit arcu dapibus quam, eu viverra est nunc sit amet purus. Aliquam condimentum sapien vel tortor scelerisque molestie."
         android:paddingStart="20dp"
+        style="@style/Background"
         android:paddingTop="20dp"
         android:paddingEnd="10dp"
 
@@ -84,6 +87,7 @@
         android:background="@color/purpleforbackgroud"
         android:gravity="center"
         android:text="00/00/0000"
+        style="@style/Button"
         android:textColor="@color/white"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"

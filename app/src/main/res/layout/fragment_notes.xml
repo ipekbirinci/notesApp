@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".notes.NotesFragment"
+    style="@style/Beyaz"
     android:padding="24dp">
 
     <LinearLayout
@@ -15,6 +16,7 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingStart="10dp"
+        style="@style/Beyaz"
         android:paddingEnd="10dp">
 
         <SearchView
@@ -24,6 +26,7 @@
             android:layout_weight="4"
             android:background="@drawable/edit_text_background"
             android:backgroundTint="@color/background"
+            style="@style/Background"
             android:gravity="center"
             android:hint="@string/edit_text_hint"
             android:paddingStart="32dp"
@@ -35,9 +38,10 @@
             android:layout_height="30dp"
             android:layout_weight="1"
             android:clickable="true"
+            style="@style/Button"
             android:background="@color/white"
             android:src="@drawable/card_view"/>
-        <androidx.appcompat.widget.AppCompatImageButton
+        <Switch
             android:id="@+id/turn_dark"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -55,6 +59,7 @@
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            style="@style/Beyaz"
             android:paddingStart="11dp"
             android:paddingTop="10dp"
             android:paddingEnd="15dp"
