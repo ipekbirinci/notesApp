@@ -1,5 +1,7 @@
 package com.example.tryhilt.firebase
 
+import android.content.Intent
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -24,6 +26,10 @@ import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -32,16 +38,25 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.tryhilt.MainActivity
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoginScreen(
-    loginViewModel: LoginViewModel?=null
+    loginViewModel: LoginViewModel?=null,
+    navigateToSignUp:()->Unit
+
 //navigationlar gelecek home ve kayıt ol
 ){
     val loginUiState=loginViewModel?.loginUiState
     val isError=loginUiState?.loginError!=null
+    var homeDirection by remember {
+        mutableStateOf(false)
+    }
     val context= LocalContext.current
+    if(homeDirection){
+        navigateToHome()
+    }
     Column(modifier = Modifier.fillMaxSize(),
         horizontalAlignment =Alignment.CenterHorizontally) {
         Text(text="Login",
@@ -74,7 +89,11 @@ fun LoginScreen(
             },
             visualTransformation = PasswordVisualTransformation(),
             isError = isError )
-        Button(onClick = { loginViewModel?.loginUser(context)}) {
+        Button(onClick = {
+
+           homeDirection= homeDirection.not()
+
+        }) {
 
             Text(text = "SignIn")
         }
@@ -85,7 +104,12 @@ fun LoginScreen(
             horizontalArrangement = Arrangement.Center,){
             Text(text="Don't have an account?")
             Spacer(modifier = Modifier.size(8.dp))
-            TextButton(onClick = { /*navigate*/ }) {
+            TextButton(onClick = {
+
+                Log.d("Textbutton","clicked")
+                navigateToSignUp()
+
+            }) {
                 Text(text = "Sign Up")
                 
             }
@@ -104,11 +128,25 @@ fun LoginScreen(
 
 }
 
+
+@Composable
+fun navigateToHome() {
+    //intent ile
+    val context= LocalContext.current
+    val intent = Intent(context, MainActivity::class.java)
+    // geri tuşuyla bu activity'e dönmemesi için "Home" activity'sini sonla
+    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+    context.startActivity(intent)
+
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SignUpScreen(
-    loginViewModel: LoginViewModel?=null
+    loginViewModel: LoginViewModel?=null,
+    navigateToSignUp:()->Unit
 //navigationlar gelecek giriş yap
+
 ){
     val loginUiState=loginViewModel?.loginUiState
     val isError=loginUiState?.signUpError!=null
@@ -190,7 +228,7 @@ fun SignUpScreen(
 @Composable
 fun PrevLoginScreen(){
 
-    LoginScreen()
+    //LoginScreen()
 
 }
 

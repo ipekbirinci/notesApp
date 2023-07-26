@@ -16,23 +16,21 @@
         android:theme="@style/Theme.TryHilt"
         tools:targetApi="31">
         <activity
-            android:name=".register.RegisterActivity"
-            android:exported="false"
-            android:label="@string/title_activity_register"
-            android:theme="@style/Theme.TryHilt" />
-        <activity
-            android:name=".signin.SignInActivity"
-            android:exported="false"
-            android:label="@string/title_activity_sign_in"
-            android:theme="@style/Theme.TryHilt" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".sign.HomeActivity"
+            android:exported="true"
+            android:label="@string/title_activity_home"
+            android:theme="@style/Theme.TryHilt"
+
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
 
             <meta-data
                 android:name="android.app.lib_name"
