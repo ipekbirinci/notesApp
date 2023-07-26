@@ -14,6 +14,7 @@
         android:layout_height="70dp"
         android:layout_weight="0"
         android:height="0dp"
+        style="@style/Head"
         android:background="@color/purpleforbackgroud"
         android:gravity="center"
         android:hint="Title Here"
@@ -29,6 +30,7 @@
         android:layout_weight="0"
         android:background="@color/background"
         android:textSize="24dp"
+        style="@style/Background"
         app:layout_constraintBottom_toTopOf="@+id/update_button"
         app:layout_constraintTop_toBottomOf="@+id/update_title"
         tools:layout_editor_absoluteX="31dp">
@@ -41,6 +43,7 @@
         android:layout_height="70dp"
         android:layout_gravity="bottom"
         android:height="0dp"
+        style="@style/Button"
         android:text="Update"
         android:background="@color/purpleforbackgroud"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#112A46</color>
+    <color name="purple_200">#F3F0F8</color>
     <color name="purple_500">#ada3be</color>
     <color name="purple_700">#ada3be</color>
     <color name="blue">#afbbd5</color>
-
     <color name="purpleforbackgroud">#ada3be</color>
     <color name="pink">#F5C3C5</color>
     <color name="yellow">#fad178</color>
@@ -13,4 +12,15 @@
     <color name="teal_700">#C0ACE6</color>
     <color name="black">#C5ADE7</color>
     <color name="white">#FFFFFFFF</color>
+
+
+    <color name="grey">#40403F</color>
+    <color name="darkgrey">#272727</color>
+    <color name="darkblack">#070707</color>
+    <color name="lightgrey">#8D8D8E</color>
+
+
+
+
+
 </resources>
