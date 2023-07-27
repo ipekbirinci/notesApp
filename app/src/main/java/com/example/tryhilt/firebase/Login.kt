@@ -38,13 +38,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.tryhilt.MainActivity
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoginScreen(
-    loginViewModel: LoginViewModel?=null,
-    navigateToSignUp:()->Unit
+    loginViewModel:LoginViewModel = hiltViewModel(),
+    navigateToSignUp:(()->Unit)?=null
 
 //navigationlar gelecek home ve kayıt ol
 ){
@@ -91,6 +92,7 @@ fun LoginScreen(
             isError = isError )
         Button(onClick = {
 
+            //kullancı var mı baktıktan sonra sign up
            homeDirection= homeDirection.not()
 
         }) {
@@ -107,7 +109,7 @@ fun LoginScreen(
             TextButton(onClick = {
 
                 Log.d("Textbutton","clicked")
-                navigateToSignUp()
+                navigateToSignUp?.invoke()
 
             }) {
                 Text(text = "Sign Up")
@@ -120,6 +122,7 @@ fun LoginScreen(
 
         LaunchedEffect(key1 = loginViewModel?.hasUser){
             if(loginViewModel?.hasUser==true){
+
                 //navigate yapılcak
             }
         }
@@ -144,7 +147,7 @@ fun navigateToHome() {
 @Composable
 fun SignUpScreen(
     loginViewModel: LoginViewModel?=null,
-    navigateToSignUp:()->Unit
+    navigateToSignUp:(()->Unit)?=null
 //navigationlar gelecek giriş yap
 
 ){
@@ -205,7 +208,7 @@ fun SignUpScreen(
             horizontalArrangement = Arrangement.Center,){
             Text(text="Already have an account?")
             Spacer(modifier = Modifier.size(8.dp))
-            TextButton(onClick = { /*navigate*/ }) {
+            TextButton(onClick = { navigateToSignUp?.invoke() }) {
                 Text(text = "Sign In")
 
             }
@@ -217,6 +220,7 @@ fun SignUpScreen(
         LaunchedEffect(key1 = loginViewModel?.hasUser){
             if(loginViewModel?.hasUser==true){
                 //navigate yapılcak
+                navigateToSignUp?.invoke()
             }
         }
 
@@ -236,6 +240,6 @@ fun PrevLoginScreen(){
 @Composable
 fun PrevSignUpScreen(){
 
-    SignUpScreen()
+    //SignUpScreen()
 
 }
