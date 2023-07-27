@@ -18,7 +18,9 @@ import androidx.navigation.compose.rememberNavController
 import com.example.tryhilt.firebase.Screen
 import com.example.tryhilt.firebase.SetUpNavGraph
 import com.example.tryhilt.sign.ui.theme.TryHiltTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

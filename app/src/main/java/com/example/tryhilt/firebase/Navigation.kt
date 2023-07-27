@@ -36,6 +36,7 @@ fun SetUpNavGraph(
     }
 
 }
+//inject ile view model ya da lazy ile
 
 
 
@@ -49,7 +50,7 @@ fun NavGraphBuilder.signupRoute(){
 fun NavGraphBuilder.backSignInRoute(){
     composable(route = Screen.GoBack.route){
 
-       // LoginScreen()
+        LoginScreen()
     }
 }
 
